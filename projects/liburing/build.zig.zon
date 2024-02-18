@@ -1,6 +1,6 @@
 .{
     .name = "liburing",
-    .version = "0.0.0",
+    .version = "2.5.0",
     .paths = .{
         "build.zig",
         "build.zig.zon",

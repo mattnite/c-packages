@@ -1,6 +1,6 @@
 .{
     .name = "ebur128",
-    .version = "0.0.0",
+    .version = "1.2.6",
     .paths = .{
         "build.zig",
         "build.zig.zon",
