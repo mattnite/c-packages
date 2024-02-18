@@ -1,0 +1,11 @@
+.{
+    .name = "ebur128",
+    .version = "0.0.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "c/ebur128",
+        "zig",
+    },
+}

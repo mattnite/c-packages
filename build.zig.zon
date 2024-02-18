@@ -1,0 +1,17 @@
+.{
+    .name = "c-packages",
+    .version = "0.0.0",
+    .dependencies = .{
+        .liburing = .{
+            .path = "projects/liburing",
+        },
+        .ebur128 = .{
+            .path = "projects/ebur128",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "README.md",
+    },
+}

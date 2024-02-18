@@ -1,0 +1,6 @@
+[submodule "projects/ebur128/c"]
+	path = projects/ebur128/c
+	url = https://github.com/jiixyj/libebur128.git
+[submodule "projects/liburing/c"]
+	path = projects/liburing/c
+	url = https://github.com/axboe/liburing.git
