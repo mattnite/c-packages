@@ -9,7 +9,7 @@ const Arguments = struct {
     have_futexv: bool,
     have_idtype_t: bool,
 
-    fn from_process_args() !Arguments {
+    fn from_process_args(allocator: std.mem.Allocator) !Arguments {
         var output_path: ?[]const u8 = null;
         var have_kernel_rwf_t = false;
         var have_kernel_timespec = false;
@@ -17,7 +17,9 @@ const Arguments = struct {
         var have_futexv = false;
         var have_idtype_t = false;
 
-        var it = std.process.args();
+        var it = try std.process.argsWithAllocator(allocator);
+        defer it.deinit();
+
         _ = it.skip();
 
         while (true) {
@@ -50,7 +52,7 @@ const Arguments = struct {
 };
 
 pub fn main() !void {
-    const args = try Arguments.from_process_args();
+    const args = try Arguments.from_process_args(std.heap.page_allocator);
 
     const file = try std.fs.cwd().createFile(args.output_path, .{});
     defer file.close();
