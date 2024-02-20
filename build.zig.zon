@@ -8,6 +8,10 @@
         .ebur128 = .{
             .path = "projects/ebur128",
         },
+        .boxzer = .{
+            .url = "https://github.com/mattnite/boxzer/archive/7d7c3be63e2c93f3a21ba964122d214893f6da20.tar.gz",
+            .hash = "12204c556b53c118e70c4c7dbae42bdc2e143e712e67cb3bbee089028931a5c10726",
+        },
     },
     .paths = .{
         "build.zig",

@@ -1,0 +1,38 @@
+name: Create Release Draft
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+jobs:
+  create_release_draft:
+    runs-on: macos-latest
+    steps:
+    - name: Extract tag name
+      run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Setup Zig
+      uses: goto-bus-stop/setup-zig@v2
+      with:
+        version: master
+
+    - name: Assemble Packages
+      run: zig build package -- https://github.com/mattnite/c-packages/releases/download
+
+    - name: Create Release Draft
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "boxzer-out/c-packages-${{ env.TAG_NAME }}/*.tar.gz"
+        artifactErrorsFailBuild: true
+        draft: true
+        generateReleaseNotes: true

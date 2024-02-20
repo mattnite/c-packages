@@ -76,6 +76,7 @@ pub fn build(b: *Build) void {
             .flags = &.{},
         });
 
+    uring.addIncludePath(.{ .path = "c/src/include" });
     uring.addIncludePath(.{ .path = b.getInstallPath(.{ .header = {} }, "") });
     install_header_path(uring, version_h, "liburing/io_uring_version.h");
     install_header_path(uring, compat_h, "liburing/compat.h");
