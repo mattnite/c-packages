@@ -6,6 +6,7 @@
         "build.zig.zon",
         "LICENSE",
         "c/ebur128",
+        "c/COPYING",
         "zig",
     },
 }
