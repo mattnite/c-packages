@@ -1,0 +1,26 @@
+name: Create Release Draft
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+jobs:
+  - name: Checkout
+    uses: actions/checkout@v4
+
+  - name: Setup Zig
+    uses: goto-bus-stop/setup-zig@v2
+    with:
+      version: master
+
+  - name: Assemble Packages
+    run: zig build package -- https://github.com/mattnite/c-packages/releases/download
+
+  - name: Create Release Draft
+    uses: ncipollo/release-action@v1
+    with:
+      artifacts: "boxzer-out/c-packages-${{ replace(github.ref, 'refs/tags/', '') }}/*.tar.gz"
+      artifactErrorsFailBuild: true
+      draft: true
+      generateReleaseNotes: true
