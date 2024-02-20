@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     tags:
-      - "*.*.*"
+      - "c-packages-*.*.*"
 
 jobs:
   create_release_draft:
