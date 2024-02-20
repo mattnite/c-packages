@@ -32,7 +32,7 @@ jobs:
     - name: Create Release Draft
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "boxzer-out/c-packages-${{ env.TAG_NAME }}/*.tar.gz"
+        artifacts: "boxzer-out/${{ env.TAG_NAME }}/*.tar.gz"
         artifactErrorsFailBuild: true
         draft: true
         generateReleaseNotes: true
