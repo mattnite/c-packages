@@ -1,0 +1,14 @@
+.{
+    .name = "libcyaml",
+    .version = "1.4.1",
+    .dependencies = .{
+        .libyaml = .{ .path = "../libyaml" },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "c/test",
+        "c/src",
+    },
+}
