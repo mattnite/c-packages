@@ -31,3 +31,4 @@ jobs:
 
     - name: Packaging Dry Run
       run: zig build package -- https://github.com/mattnite/c-packages/releases/download
+      if: ${{ matrix.os == macos-latest }}
