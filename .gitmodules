@@ -4,3 +4,9 @@
 [submodule "projects/liburing/c"]
 	path = projects/liburing/c
 	url = https://github.com/axboe/liburing.git
+[submodule "projects/libyaml/c"]
+	path = projects/libyaml/c
+	url = https://github.com/yaml/libyaml.git
+[submodule "projects/libcyaml/c"]
+	path = projects/libcyaml/c
+	url = https://github.com/tlsa/libcyaml.git

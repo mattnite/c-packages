@@ -1,13 +1,13 @@
 .{
     .name = "c-packages",
-    .version = "0.0.0",
+    .version = "0.0.1",
     .dependencies = .{
-        .liburing = .{
-            .path = "projects/liburing",
-        },
-        .ebur128 = .{
-            .path = "projects/ebur128",
-        },
+        .ebur128 = .{ .path = "projects/ebur128" },
+        .libcyaml = .{ .path = "projects/libcyaml" },
+        .liburing = .{ .path = "projects/liburing" },
+        .libyaml = .{ .path = "projects/libyaml" },
+
+        // used for packaging
         .boxzer = .{
             .url = "https://github.com/mattnite/boxzer/archive/44183569cb4418f3b127711a989ded8822869a91.tar.gz",
             .hash = "1220f6fc705e2d658644c96c093ed7907f2c3091252058d6bdfdc0334965dd25d6c4",

@@ -5,6 +5,8 @@ const Build = std.Build;
 const projects = .{
     .{ "liburing", @import("liburing") },
     .{ "ebur128", @import("ebur128") },
+    .{ "libyaml", @import("libyaml") },
+    .{ "libcyaml", @import("libcyaml") },
 };
 
 pub fn build(b: *Build) void {
@@ -21,7 +23,6 @@ pub fn build(b: *Build) void {
     }
 
     const boxzer_dep = b.dependency("boxzer", .{});
-
     const boxzer_exe = boxzer_dep.artifact("boxzer");
     const boxzer_run = b.addRunArtifact(boxzer_exe);
     if (b.args) |args|
