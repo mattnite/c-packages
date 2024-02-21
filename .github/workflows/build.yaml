@@ -28,3 +28,6 @@ jobs:
 
     - name: Build
       run: zig build
+
+    - name: Packaging Dry Run
+      run: zig build package
