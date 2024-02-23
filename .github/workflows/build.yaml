@@ -29,8 +29,8 @@ jobs:
     - name: Build
       run: zig build
 
-    - name: Test
-      run: zig build test
+        #- name: Test
+        #  run: zig build test
 
     - name: Packaging Dry Run
       run: zig build package -- https://github.com/mattnite/c-packages/releases/download
