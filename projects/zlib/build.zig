@@ -86,6 +86,7 @@ pub fn build(b: *Build) void {
     const module_test = b.addTest(.{
         .root_source_file = .{ .path = "zig/bindings.zig" },
     });
+    module_test.linkLibrary(z);
 
     const test_step = b.step("test", "Run tests");
     test_step.dependOn(&example_run.step);
