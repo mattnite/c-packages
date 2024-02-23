@@ -85,6 +85,9 @@ pub fn build(b: *Build) void {
     uring.installHeader("c/src/include/liburing/barrier.h", "liburing/barrier.h");
 
     b.installArtifact(uring);
+
+    // a test step is needed for c-packages, but it ultimately does nothing for this project
+    _ = b.step("test", "Run tests");
 }
 
 fn install_header_path(compile: *Build.Step.Compile, path: Build.LazyPath, dest_rel_path: []const u8) void {

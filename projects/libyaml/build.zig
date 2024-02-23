@@ -47,4 +47,8 @@ pub fn build(b: *Build) void {
     });
     libyaml.installHeader("c/include/yaml.h", "yaml.h");
     b.installArtifact(libyaml);
+
+    // c-packages requires a test step, but it does nothing for this project
+    // right now.
+    _ = b.step("test", "Run tests");
 }

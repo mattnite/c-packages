@@ -90,9 +90,12 @@ pub fn build(b: *std.Build) void {
         .flags = flags,
     });
     test_exe.linkLibrary(cyaml);
+    std.fs.cwd().makePath("c/build") catch {};
 
     const test_run = b.addRunArtifact(test_exe);
     test_run.setCwd(.{ .path = "c" });
+    // TODO: print stderr on failure
+
     const test_step = b.step("test", "Run test executable");
     test_step.dependOn(&test_run.step);
 }

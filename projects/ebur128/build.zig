@@ -32,11 +32,14 @@ pub fn build(b: *Build) void {
     ebur128.addIncludePath(.{ .path = "c/ebur128/queue" });
     ebur128.installHeader("c/ebur128/ebur128.h", "ebur128.h");
     ebur128.linkSystemLibrary("m");
+    b.installArtifact(ebur128);
 
     const ebur128_module = b.addModule("ebur128", .{
         .root_source_file = .{ .path = "zig/bindings.zig" },
     });
     ebur128_module.linkLibrary(ebur128);
 
-    b.installArtifact(ebur128);
+    // c-packges requires a test step, it does nothing for this project right
+    // now
+    _ = b.step("test", "Run tests");
 }
