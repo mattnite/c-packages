@@ -6,11 +6,12 @@
         .libcyaml = .{ .path = "projects/libcyaml" },
         .liburing = .{ .path = "projects/liburing" },
         .libyaml = .{ .path = "projects/libyaml" },
+        .zlib = .{ .path = "projects/zlib" },
 
         // used for packaging
         .boxzer = .{
-            .url = "https://github.com/mattnite/boxzer/archive/44183569cb4418f3b127711a989ded8822869a91.tar.gz",
-            .hash = "1220f6fc705e2d658644c96c093ed7907f2c3091252058d6bdfdc0334965dd25d6c4",
+            .url = "https://github.com/mattnite/boxzer/archive/095b99afda4c0210010493ee1fb09d2d44024cb6.tar.gz",
+            .hash = "122095d1d5d4073deb6073d530f535e62a33b8a1703df3510151f5f9e249eedefb0d",
         },
     },
     .paths = .{

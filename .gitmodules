@@ -10,3 +10,6 @@
 [submodule "projects/libcyaml/c"]
 	path = projects/libcyaml/c
 	url = https://github.com/tlsa/libcyaml.git
+[submodule "projects/zlib/c"]
+	path = projects/zlib/c
+	url = https://github.com/madler/zlib.git
