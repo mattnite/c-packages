@@ -95,7 +95,6 @@ pub fn build(b: *std.Build) void {
     const test_run = b.addRunArtifact(test_exe);
     test_run.setCwd(.{ .path = "c" });
     // TODO: print stderr on failure
-    _ = test_run.captureStdErr();
 
     const test_step = b.step("test", "Run test executable");
     test_step.dependOn(&test_run.step);

@@ -67,7 +67,6 @@ pub fn build(b: *Build) void {
     });
 
     const example_run = b.addRunArtifact(example_exe);
-    _ = example_run.captureStdOut();
 
     const example64_exe = b.addExecutable(.{
         .name = "example64",
@@ -81,7 +80,6 @@ pub fn build(b: *Build) void {
     });
 
     const example64_run = b.addRunArtifact(example64_exe);
-    _ = example64_run.captureStdOut();
 
     const module_test = b.addTest(.{
         .root_source_file = .{ .path = "zig/bindings.zig" },
