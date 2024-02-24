@@ -6,5 +6,6 @@
         "build.zig.zon",
         "LICENSE",
         "c/src",
+        "c/include/yaml.h"
     },
 }
