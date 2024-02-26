@@ -3,6 +3,7 @@
     .version = "0.0.2",
     .dependencies = .{
         .ebur128 = .{ .path = "projects/ebur128" },
+        .lib6502 = .{ .path = "projects/lib6502" },
         .libcyaml = .{ .path = "projects/libcyaml" },
         .liburing = .{ .path = "projects/liburing" },
         .libyaml = .{ .path = "projects/libyaml" },
