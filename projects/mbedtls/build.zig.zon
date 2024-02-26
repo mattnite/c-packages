@@ -5,7 +5,9 @@
         "LICENSE",
         "build.zig",
         "build.zig.zon",
-        "c",
-        "zig",
+        "c/LICENSE",
+        "c/include",
+        "c/library",
+        "c/programs",
     },
 }
