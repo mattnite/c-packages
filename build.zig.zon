@@ -8,6 +8,7 @@
         .liburing = .{ .path = "projects/liburing" },
         .libyaml = .{ .path = "projects/libyaml" },
         .zlib = .{ .path = "projects/zlib" },
+        .mbedtls = .{ .path = "projects/mbedtls" },
 
         // used for packaging
         .boxzer = .{
