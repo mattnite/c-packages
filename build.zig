@@ -3,10 +3,11 @@ const std = @import("std");
 const Build = std.Build;
 
 const projects = .{
-    .{ "liburing", @import("liburing") },
     .{ "ebur128", @import("ebur128") },
-    .{ "libyaml", @import("libyaml") },
+    .{ "lib6502", @import("lib6502") },
     .{ "libcyaml", @import("libcyaml") },
+    .{ "liburing", @import("liburing") },
+    .{ "libyaml", @import("libyaml") },
     .{ "zlib", @import("zlib") },
 };
 
