@@ -1,0 +1,13 @@
+.{
+    .name = "mbedtls",
+    .version = "3.5.2",
+    .paths = .{
+        "LICENSE",
+        "build.zig",
+        "build.zig.zon",
+        "c/LICENSE",
+        "c/include",
+        "c/library",
+        "c/programs",
+    },
+}

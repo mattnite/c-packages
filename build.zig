@@ -8,6 +8,7 @@ const projects = .{
     .{ "libcyaml", @import("libcyaml") },
     .{ "liburing", @import("liburing") },
     .{ "libyaml", @import("libyaml") },
+    .{ "mbedtls", @import("mbedtls") },
     .{ "zlib", @import("zlib") },
 };
 
