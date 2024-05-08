@@ -7,6 +7,5 @@
         "LICENSE",
         "c/src",
         "c/LICENSE",
-        "zig",
     },
 }
