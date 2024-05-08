@@ -29,8 +29,8 @@ pub fn build(b: *Build) void {
         .files = srcs,
         .flags = &.{},
     });
-    mbedtls.installHeadersDirectory("c/include/mbedtls", "mbedtls");
-    mbedtls.installHeadersDirectory("c/include/psa", "psa");
+    mbedtls.installHeadersDirectory(.{ .path = "c/include/mbedtls" }, "mbedtls", .{});
+    mbedtls.installHeadersDirectory(.{ .path = "c/include/psa" }, "psa", .{});
     b.installArtifact(mbedtls);
 
     const selftest = b.addExecutable(.{

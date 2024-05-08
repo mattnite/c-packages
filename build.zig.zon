@@ -1,6 +1,6 @@
 .{
     .name = "c-packages",
-    .version = "0.0.4",
+    .version = "0.12.0",
     .dependencies = .{
         .ebur128 = .{ .path = "projects/ebur128" },
         .lib6502 = .{ .path = "projects/lib6502" },
@@ -12,8 +12,8 @@
 
         // used for packaging
         .boxzer = .{
-            .url = "https://github.com/mattnite/boxzer/archive/b9f08b4c9b1db709af03763ace69761a6482238c.tar.gz",
-            .hash = "12204fdd9914a6d99abb55366b3a664395a6038d7e6308178c0664158eff9418e188",
+            .url = "https://github.com/mattnite/boxzer/archive/6b064832cd8b080251b98c4ceddf11ff63268a6c.tar.gz",
+            .hash = "1220a14c01a66c023d8944dc672edd5121f98f82196fefbc09a13bcadb96e1c8e7f1",
         },
     },
     .paths = .{

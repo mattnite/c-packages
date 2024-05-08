@@ -67,7 +67,7 @@ pub fn build(b: *std.Build) void {
     });
     cyaml.linkLibrary(libyaml_dep.artifact("yaml"));
 
-    cyaml.installHeader("c/include/cyaml/cyaml.h", "cyaml/cyaml.h");
+    cyaml.installHeader(.{ .path = "c/include/cyaml/cyaml.h" }, "cyaml/cyaml.h");
     b.installArtifact(cyaml);
 
     const test_exe = b.addExecutable(.{
