@@ -76,10 +76,14 @@ pub fn build(b: *Build) void {
             .flags = &.{},
         });
 
+    const install_compat_h = b.addInstallHeaderFile(compat_h, "liburing/compat.h");
+    uring.step.dependOn(&install_compat_h.step);
+
+    const install_version_h = b.addInstallHeaderFile(version_h, "liburing/io_uring_version.h");
+    uring.step.dependOn(&install_version_h.step);
+
     uring.addIncludePath(.{ .path = "c/src/include" });
     uring.addIncludePath(.{ .path = b.getInstallPath(.{ .header = {} }, "") });
-    uring.installHeader(version_h, "liburing/io_uring_version.h");
-    uring.installHeader(compat_h, "liburing/compat.h");
     uring.installHeader(.{ .path = "c/src/include/liburing.h" }, "liburing.h");
     uring.installHeader(.{ .path = "c/src/include/liburing/io_uring.h" }, "liburing/io_uring.h");
     uring.installHeader(.{ .path = "c/src/include/liburing/barrier.h" }, "liburing/barrier.h");
