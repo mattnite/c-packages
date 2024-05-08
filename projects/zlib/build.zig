@@ -46,8 +46,8 @@ pub fn build(b: *Build) void {
         },
         .flags = &.{"-std=c89"},
     });
-    z.installHeader("c/zlib.h", "zlib.h");
-    z.installHeader("c/zconf.h", "zconf.h");
+    z.installHeader(.{ .path = "c/zlib.h" }, "zlib.h");
+    z.installHeader(.{ .path = "c/zconf.h" }, "zconf.h");
     b.installArtifact(z);
 
     const mod = b.addModule("z", .{

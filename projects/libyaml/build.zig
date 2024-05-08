@@ -45,7 +45,7 @@ pub fn build(b: *Build) void {
         },
         .flags = &.{},
     });
-    libyaml.installHeader("c/include/yaml.h", "yaml.h");
+    libyaml.installHeader(.{ .path = "c/include/yaml.h" }, "yaml.h");
     b.installArtifact(libyaml);
 
     // c-packages requires a test step, but it does nothing for this project

@@ -12,8 +12,8 @@
 
         // used for packaging
         .boxzer = .{
-            .url = "https://github.com/mattnite/boxzer/archive/b9f08b4c9b1db709af03763ace69761a6482238c.tar.gz",
-            .hash = "12204fdd9914a6d99abb55366b3a664395a6038d7e6308178c0664158eff9418e188",
+            .url = "https://github.com/mattnite/boxzer/archive/bb34035d894e8188769b172ce99b5e2c553bcf24.tar.gz",
+            .hash = "12202844b4808399d7ae9f7857418012c46c73882f607cfa0ad69de19a7d556f1995",
         },
     },
     .paths = .{

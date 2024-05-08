@@ -30,7 +30,7 @@ pub fn build(b: *Build) void {
         .file = .{ .path = "c/lib6502.c" },
         .flags = &.{},
     });
-    lib6502.installHeader("c/lib6502.h", "lib6502.h");
+    lib6502.installHeader(.{ .path = "c/lib6502.h" }, "lib6502.h");
     b.installArtifact(lib6502);
 
     const module = b.addModule("6502", .{

@@ -78,23 +78,16 @@ pub fn build(b: *Build) void {
 
     uring.addIncludePath(.{ .path = "c/src/include" });
     uring.addIncludePath(.{ .path = b.getInstallPath(.{ .header = {} }, "") });
-    install_header_path(uring, version_h, "liburing/io_uring_version.h");
-    install_header_path(uring, compat_h, "liburing/compat.h");
-    uring.installHeader("c/src/include/liburing.h", "liburing.h");
-    uring.installHeader("c/src/include/liburing/io_uring.h", "liburing/io_uring.h");
-    uring.installHeader("c/src/include/liburing/barrier.h", "liburing/barrier.h");
+    uring.installHeader(version_h, "liburing/io_uring_version.h");
+    uring.installHeader(compat_h, "liburing/compat.h");
+    uring.installHeader(.{ .path = "c/src/include/liburing.h" }, "liburing.h");
+    uring.installHeader(.{ .path = "c/src/include/liburing/io_uring.h" }, "liburing/io_uring.h");
+    uring.installHeader(.{ .path = "c/src/include/liburing/barrier.h" }, "liburing/barrier.h");
 
     b.installArtifact(uring);
 
     // a test step is needed for c-packages, but it ultimately does nothing for this project
     _ = b.step("test", "Run tests");
-}
-
-fn install_header_path(compile: *Build.Step.Compile, path: Build.LazyPath, dest_rel_path: []const u8) void {
-    const b = compile.step.owner;
-    const install_file = b.addInstallFileWithDir(path, .header, dest_rel_path);
-    compile.step.dependOn(&install_file.step);
-    compile.installed_headers.append(&install_file.step) catch @panic("OOM");
 }
 
 const srcs = &.{
