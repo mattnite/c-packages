@@ -56,17 +56,15 @@ pub fn build(b: *Build) void {
             .flags = &.{},
         });
 
-    const install_compat_h = b.addInstallHeaderFile(compat_h, "liburing/compat.h");
-    uring.step.dependOn(&install_compat_h.step);
+    uring.addIncludePath(b.path("c/src/include"));
+    uring.addIncludePath(compat_h.dirname().dirname());
+    uring.addIncludePath(version_h.dirname().dirname());
 
-    const install_version_h = b.addInstallHeaderFile(version_h, "liburing/io_uring_version.h");
-    uring.step.dependOn(&install_version_h.step);
-
-    uring.addIncludePath(.{ .path = "c/src/include" });
-    uring.addIncludePath(.{ .path = b.getInstallPath(.{ .header = {} }, "") });
-    uring.installHeader(.{ .path = "c/src/include/liburing.h" }, "liburing.h");
-    uring.installHeader(.{ .path = "c/src/include/liburing/io_uring.h" }, "liburing/io_uring.h");
-    uring.installHeader(.{ .path = "c/src/include/liburing/barrier.h" }, "liburing/barrier.h");
+    uring.installHeader(b.path("c/src/include/liburing.h"), "liburing.h");
+    uring.installHeader(b.path("c/src/include/liburing/io_uring.h"), "liburing/io_uring.h");
+    uring.installHeader(b.path("c/src/include/liburing/barrier.h"), "liburing/barrier.h");
+    uring.installHeader(compat_h, "liburing/compat.h");
+    uring.installHeader(version_h, "liburing/io_uring_version.h");
 
     b.installArtifact(uring);
 
@@ -97,7 +95,7 @@ fn write_version_h(b: *Build, writefile: *Build.Step.WriteFile, opts: VersionHea
         .{ opts.major, opts.minor },
     );
 
-    return writefile.add("io_uring_version.h", try text.toOwnedSlice());
+    return writefile.add("liburing/io_uring_version.h", try text.toOwnedSlice());
 }
 
 const CompatHeaderOptions = struct {
@@ -194,7 +192,7 @@ fn write_compat_h(b: *Build, writefile: *Build.Step.WriteFile, opts: CompatHeade
 
     try writer.writeAll("#endif\n");
 
-    return writefile.add("compat.h", try text.toOwnedSlice());
+    return writefile.add("liburing/compat.h", try text.toOwnedSlice());
 }
 
 const srcs = &.{
