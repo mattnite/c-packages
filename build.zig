@@ -10,6 +10,7 @@ const projects = .{
     .{ "libyaml", @import("libyaml") },
     .{ "mbedtls", @import("mbedtls") },
     .{ "zlib", @import("zlib") },
+    .{ "cmark-gfm", @import("cmark-gfm") },
 };
 
 pub fn build(b: *Build) void {

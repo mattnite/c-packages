@@ -1,6 +1,21 @@
 const std = @import("std");
 const Build = std.Build;
 
+pub const targets: []const std.Target.Query = &.{
+    .{ .cpu_arch = .x86, .os_tag = .linux, .abi = .gnu },
+    .{ .cpu_arch = .x86, .os_tag = .linux, .abi = .musl },
+    .{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .gnu },
+    .{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .musl },
+    .{ .cpu_arch = .aarch64, .os_tag = .linux, .abi = .gnu },
+    .{ .cpu_arch = .aarch64, .os_tag = .linux, .abi = .musl },
+
+    .{ .cpu_arch = .x86_64, .os_tag = .macos },
+    .{ .cpu_arch = .aarch64, .os_tag = .macos },
+
+    .{ .cpu_arch = .x86_64, .os_tag = .windows },
+    .{ .cpu_arch = .aarch64, .os_tag = .windows },
+};
+
 pub fn build(b: *Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
@@ -80,6 +95,8 @@ pub fn build(b: *Build) void {
     cmark_exe.linkLibrary(cmark_lib);
     cmark_exe.linkLibrary(cmark_extensions_lib);
     b.installArtifact(cmark_exe);
+
+    _ = b.step("test", "Run tests");
 }
 
 const extensions_src: []const []const u8 = &.{
