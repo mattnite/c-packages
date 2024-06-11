@@ -46,12 +46,12 @@ pub fn build(b: *Build) void {
         },
         .flags = &.{"-std=c89"},
     });
-    z.installHeader(.{ .path = "c/zlib.h" }, "zlib.h");
-    z.installHeader(.{ .path = "c/zconf.h" }, "zconf.h");
+    z.installHeader(b.path("c/zlib.h"), "zlib.h");
+    z.installHeader(b.path("c/zconf.h"), "zconf.h");
     b.installArtifact(z);
 
     const mod = b.addModule("z", .{
-        .root_source_file = .{ .path = "zig/bindings.zig" },
+        .root_source_file = b.path("zig/bindings.zig"),
     });
     mod.linkLibrary(z);
 
@@ -62,8 +62,8 @@ pub fn build(b: *Build) void {
     });
     example_exe.linkLibrary(z);
     example_exe.addCSourceFile(.{
-        .file = .{ .path = "c/test/example.c" },
-        .flags = &.{},
+        .file = b.path("c/test/example.c"),
+        .flags = &.{"-std=c89"},
     });
 
     const example_run = b.addRunArtifact(example_exe);
@@ -75,14 +75,14 @@ pub fn build(b: *Build) void {
     });
     example64_exe.linkLibrary(z);
     example64_exe.addCSourceFile(.{
-        .file = .{ .path = "c/test/example.c" },
-        .flags = &.{"-D_FILE_OFFSET_BITS=64"},
+        .file = b.path("c/test/example.c"),
+        .flags = &.{ "-D_FILE_OFFSET_BITS=64", "-std=c89" },
     });
 
     const example64_run = b.addRunArtifact(example64_exe);
 
     const module_test = b.addTest(.{
-        .root_source_file = .{ .path = "zig/bindings.zig" },
+        .root_source_file = b.path("zig/bindings.zig"),
     });
     module_test.linkLibrary(z);
 

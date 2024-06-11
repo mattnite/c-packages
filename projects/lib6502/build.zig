@@ -27,14 +27,14 @@ pub fn build(b: *Build) void {
         .link_libc = true,
     });
     lib6502.addCSourceFile(.{
-        .file = .{ .path = "c/lib6502.c" },
+        .file = b.path("c/lib6502.c"),
         .flags = &.{},
     });
-    lib6502.installHeader(.{ .path = "c/lib6502.h" }, "lib6502.h");
+    lib6502.installHeader(b.path("c/lib6502.h"), "lib6502.h");
     b.installArtifact(lib6502);
 
     const module = b.addModule("6502", .{
-        .root_source_file = .{ .path = "zig/bindings.zig" },
+        .root_source_file = b.path("zig/bindings.zig"),
     });
     module.linkLibrary(lib6502);
 
@@ -44,7 +44,7 @@ pub fn build(b: *Build) void {
         .optimize = optimize,
     });
     run6502.addCSourceFile(.{
-        .file = .{ .path = "c/run6502.c" },
+        .file = b.path("c/run6502.c"),
         .flags = &.{},
     });
     run6502.linkLibrary(lib6502);
