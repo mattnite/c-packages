@@ -31,7 +31,7 @@ pub fn build(b: *Build) void {
     libyaml.defineCMacro("YAML_VERSION_PATCH", "5");
     libyaml.defineCMacro("YAML_VERSION_STRING", "\"0.2.5\"");
     libyaml.defineCMacro("YAML_DECLARE_STATIC", "1");
-    libyaml.addIncludePath(.{ .path = "c/include" });
+    libyaml.addIncludePath(b.path("c/include"));
     libyaml.addCSourceFiles(.{
         .files = &.{
             "c/src/api.c",
@@ -45,7 +45,7 @@ pub fn build(b: *Build) void {
         },
         .flags = &.{},
     });
-    libyaml.installHeader(.{ .path = "c/include/yaml.h" }, "yaml.h");
+    libyaml.installHeader(b.path("c/include/yaml.h"), "yaml.h");
     b.installArtifact(libyaml);
 
     // c-packages requires a test step, but it does nothing for this project

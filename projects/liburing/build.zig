@@ -52,7 +52,7 @@ pub fn build(b: *Build) void {
     uring.addCSourceFiles(.{ .files = srcs, .flags = &.{} });
     if (!link_libc)
         uring.addCSourceFile(.{
-            .file = .{ .path = "c/src/nolibc.c" },
+            .file = b.path("c/src/nolibc.c"),
             .flags = &.{},
         });
 

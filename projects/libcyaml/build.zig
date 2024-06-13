@@ -53,7 +53,7 @@ pub fn build(b: *std.Build) void {
     cyaml.defineCMacro("VERSION_MINOR", "4");
     cyaml.defineCMacro("VERSION_PATCH", "1");
     cyaml.defineCMacro("VERSION_DEVEL", "0");
-    cyaml.addIncludePath(.{ .path = "c/include" });
+    cyaml.addIncludePath(b.path("c/include"));
     cyaml.addCSourceFiles(.{
         .files = &.{
             "c/src/free.c",
@@ -67,7 +67,7 @@ pub fn build(b: *std.Build) void {
     });
     cyaml.linkLibrary(libyaml_dep.artifact("yaml"));
 
-    cyaml.installHeader(.{ .path = "c/include/cyaml/cyaml.h" }, "cyaml/cyaml.h");
+    cyaml.installHeader(b.path("c/include/cyaml/cyaml.h"), "cyaml/cyaml.h");
     b.installArtifact(cyaml);
 
     const test_exe = b.addExecutable(.{
@@ -93,7 +93,7 @@ pub fn build(b: *std.Build) void {
     std.fs.cwd().makePath("c/build") catch {};
 
     const test_run = b.addRunArtifact(test_exe);
-    test_run.setCwd(.{ .path = "c" });
+    test_run.setCwd(b.path("c"));
     // TODO: print stderr on failure
 
     const test_step = b.step("test", "Run test executable");

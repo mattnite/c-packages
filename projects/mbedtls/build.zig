@@ -24,13 +24,13 @@ pub fn build(b: *Build) void {
         .optimize = optimize,
         .link_libc = true,
     });
-    mbedtls.addIncludePath(.{ .path = "c/include" });
+    mbedtls.addIncludePath(b.path("c/include"));
     mbedtls.addCSourceFiles(.{
         .files = srcs,
         .flags = &.{},
     });
-    mbedtls.installHeadersDirectory(.{ .path = "c/include/mbedtls" }, "mbedtls", .{});
-    mbedtls.installHeadersDirectory(.{ .path = "c/include/psa" }, "psa", .{});
+    mbedtls.installHeadersDirectory(b.path("c/include/mbedtls"), "mbedtls", .{});
+    mbedtls.installHeadersDirectory(b.path("c/include/psa"), "psa", .{});
     b.installArtifact(mbedtls);
 
     const selftest = b.addExecutable(.{
@@ -41,7 +41,7 @@ pub fn build(b: *Build) void {
     });
     selftest.defineCMacro("MBEDTLS_SELF_TEST", null);
     selftest.addCSourceFile(.{
-        .file = .{ .path = "c/programs/test/selftest.c" },
+        .file = b.path("c/programs/test/selftest.c"),
         .flags = &.{},
     });
     selftest.linkLibrary(mbedtls);
