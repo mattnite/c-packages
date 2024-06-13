@@ -1,6 +1,6 @@
 .{
     .name = "c-packages",
-    .version = "0.12.1",
+    .version = "0.13.0",
     .dependencies = .{
         .ebur128 = .{ .path = "projects/ebur128" },
         .lib6502 = .{ .path = "projects/lib6502" },
