@@ -16,3 +16,6 @@
 [submodule "projects/mbedtls/c"]
 	path = projects/mbedtls/c
 	url = https://github.com/Mbed-TLS/mbedtls.git
+[submodule "projects/cmark-gfm/c"]
+	path = projects/cmark-gfm/c
+	url = https://github.com/github/cmark-gfm.git

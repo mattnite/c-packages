@@ -9,6 +9,7 @@
         .libyaml = .{ .path = "projects/libyaml" },
         .zlib = .{ .path = "projects/zlib" },
         .mbedtls = .{ .path = "projects/mbedtls" },
+        .@"cmark-gfm" = .{ .path = "projects/cmark-gfm" },
 
         // used for packaging
         .boxzer = .{
